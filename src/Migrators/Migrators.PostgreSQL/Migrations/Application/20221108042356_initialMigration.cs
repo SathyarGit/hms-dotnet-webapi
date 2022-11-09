@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace Migrators.PostgreSQL.Migrations.Application
 {
-    public partial class InitialMigration : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +15,9 @@ namespace Migrators.PostgreSQL.Migrations.Application
 
             migrationBuilder.EnsureSchema(
                 name: "Catalog");
+
+            migrationBuilder.EnsureSchema(
+                name: "HMS");
 
             migrationBuilder.EnsureSchema(
                 name: "Identity");
@@ -58,6 +62,48 @@ namespace Migrators.PostgreSQL.Migrations.Application
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Brands", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Department",
+                schema: "HMS",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    TenantId = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    LastModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Department", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Floor",
+                schema: "HMS",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    TenantId = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    LastModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Floor", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -138,6 +184,68 @@ namespace Migrators.PostgreSQL.Migrations.Application
                         column: x => x.BrandId,
                         principalSchema: "Catalog",
                         principalTable: "Brands",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employee",
+                schema: "HMS",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Notes = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
+                    ImagePath = table.Column<string>(type: "text", nullable: true),
+                    DepartmentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    TenantId = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    LastModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employee", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Employee_Department_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalSchema: "HMS",
+                        principalTable: "Department",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Room",
+                schema: "HMS",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    RoomNumber = table.Column<int>(type: "integer", nullable: false),
+                    NumberOfBeds = table.Column<int>(type: "integer", nullable: false),
+                    Notes = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
+                    MaintenanceNotes = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
+                    ImagePath = table.Column<string>(type: "text", nullable: true),
+                    FloorId = table.Column<Guid>(type: "uuid", nullable: false),
+                    TenantId = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastModifiedBy = table.Column<Guid>(type: "uuid", nullable: false),
+                    LastModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Room", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Room_Floor_FloorId",
+                        column: x => x.FloorId,
+                        principalSchema: "HMS",
+                        principalTable: "Floor",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -268,6 +376,12 @@ namespace Migrators.PostgreSQL.Migrations.Application
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Employee_DepartmentId",
+                schema: "HMS",
+                table: "Employee",
+                column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_BrandId",
                 schema: "Catalog",
                 table: "Products",
@@ -285,6 +399,12 @@ namespace Migrators.PostgreSQL.Migrations.Application
                 table: "Roles",
                 columns: new[] { "NormalizedName", "TenantId" },
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Room_FloorId",
+                schema: "HMS",
+                table: "Room",
+                column: "FloorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserClaims_UserId",
@@ -332,12 +452,20 @@ namespace Migrators.PostgreSQL.Migrations.Application
                 schema: "Auditing");
 
             migrationBuilder.DropTable(
+                name: "Employee",
+                schema: "HMS");
+
+            migrationBuilder.DropTable(
                 name: "Products",
                 schema: "Catalog");
 
             migrationBuilder.DropTable(
                 name: "RoleClaims",
                 schema: "Identity");
+
+            migrationBuilder.DropTable(
+                name: "Room",
+                schema: "HMS");
 
             migrationBuilder.DropTable(
                 name: "UserClaims",
@@ -356,8 +484,16 @@ namespace Migrators.PostgreSQL.Migrations.Application
                 schema: "Identity");
 
             migrationBuilder.DropTable(
+                name: "Department",
+                schema: "HMS");
+
+            migrationBuilder.DropTable(
                 name: "Brands",
                 schema: "Catalog");
+
+            migrationBuilder.DropTable(
+                name: "Floor",
+                schema: "HMS");
 
             migrationBuilder.DropTable(
                 name: "Roles",

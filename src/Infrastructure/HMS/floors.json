@@ -1,0 +1,19 @@
+[
+  {
+    "Id": "832b8cdc-91ba-4ca2-b4dd-e5951c04cb2e",
+    "Name": "First Floor",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "6f2e72ae-a5e8-484b-b387-90ee365ffb3c",
+    "Name": "Second Floor",
+    "ImageUrl": "https://fullstackhero.net/images/navbar-logo.png",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "1b7f7a32-965a-4c18-ba23-2374046dfbd4",
+    "Name": "Third Floor",
+    "ImageUrl": "https://fullstackhero.net/images/navbar-logo.png",
+    "Description": "Sample Data"
+  }
+]

@@ -1,6 +1,11 @@
 {
+  //"DatabaseSettings": {
+  //  "DBProvider": "mssql",
+  //  "ConnectionString": "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=fullStackHeroDb;Integrated Security=True;MultipleActiveResultSets=True"
+  //},
+
   "DatabaseSettings": {
-    "DBProvider": "mssql",
-    "ConnectionString": "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=fullStackHeroDb;Integrated Security=True;MultipleActiveResultSets=True"
+    "ConnectionString": "Host=localhost;Port=54320;Database=hmsdotnetdb;Username=postgres;Password=postgres;Include Error Detail=true",
+    "DBProvider": "postgresql"
   }
 }

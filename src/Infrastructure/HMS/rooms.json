@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "581900e1-bd97-456a-8af0-9538bc43c3aa",
+    "RoomNumber": "101",
+    "NumberOfBeds": "2",
+    "Notes": "Sample notes",
+    "MaintenanceNotes": "Sample Maintenanace notes",
+    "ImageUrl": "https://fullstackhero.net/images/navbar-logo.png"
+  },
+  {
+    "Id": "e126d304-192d-44ac-a261-59b9038a45fb",
+    "RoomNumber": "102",
+    "NumberOfBeds": "2",
+    "Notes": "Sample notes",
+    "MaintenanceNotes": "Sample Maintenanace notes",
+    "ImageUrl": "https://fullstackhero.net/images/navbar-logo.png"
+  },
+  {
+    "Id": "57dff369-edf0-483a-a84b-03686aae0c09",
+    "RoomNumber": "201",
+    "NumberOfBeds": "3",
+    "Notes": "Sample notes",
+    "MaintenanceNotes": "Sample Maintenanace notes",
+    "ImageUrl": "https://fullstackhero.net/images/navbar-logo.png"
+  },
+  {
+    "Id": "b1397991-4b07-4aaf-9446-f46d32c29756",
+    "RoomNumber": "601",
+    "NumberOfBeds": "2",
+    "Notes": "Sample notes",
+    "MaintenanceNotes": "Sample Maintenanace notes",
+    "ImageUrl": "https://fullstackhero.net/images/navbar-logo.png"
+  }
+]

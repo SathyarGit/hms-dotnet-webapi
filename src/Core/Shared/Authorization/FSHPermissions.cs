@@ -26,6 +26,11 @@ public static class FSHResource
     public const string RoleClaims = nameof(RoleClaims);
     public const string Products = nameof(Products);
     public const string Brands = nameof(Brands);
+    public const string Floors = nameof(Floors);
+    public const string Departments = nameof(Departments);
+    public const string Rooms = nameof(Rooms);
+    public const string Employees = nameof(Employees);
+
 }
 
 public static class FSHPermissions
@@ -64,7 +69,36 @@ public static class FSHPermissions
         new("View Tenants", FSHAction.View, FSHResource.Tenants, IsRoot: true),
         new("Create Tenants", FSHAction.Create, FSHResource.Tenants, IsRoot: true),
         new("Update Tenants", FSHAction.Update, FSHResource.Tenants, IsRoot: true),
-        new("Upgrade Tenant Subscription", FSHAction.UpgradeSubscription, FSHResource.Tenants, IsRoot: true)
+        new("Upgrade Tenant Subscription", FSHAction.UpgradeSubscription, FSHResource.Tenants, IsRoot: true),
+
+        new("View Departments", FSHAction.View, FSHResource.Departments, IsBasic: true),
+        new("Search Departments", FSHAction.Search, FSHResource.Departments, IsBasic: true),
+        new("Create Departments", FSHAction.Create, FSHResource.Departments),
+        new("Update Departments", FSHAction.Update, FSHResource.Departments),
+        new("Delete Departments", FSHAction.Delete, FSHResource.Departments),
+        new("Generate Departments", FSHAction.Generate, FSHResource.Departments),
+        new("Clean Departments", FSHAction.Clean, FSHResource.Departments),
+        new("View Floors", FSHAction.View, FSHResource.Floors, IsBasic: true),
+        new("Search Floors", FSHAction.Search, FSHResource.Floors, IsBasic: true),
+        new("Create Floors", FSHAction.Create, FSHResource.Floors),
+        new("Update Floors", FSHAction.Update, FSHResource.Floors),
+        new("Delete Floors", FSHAction.Delete, FSHResource.Floors),
+        new("Generate Floors", FSHAction.Generate, FSHResource.Floors),
+        new("Clean Floors", FSHAction.Clean, FSHResource.Floors),
+        new("View Rooms", FSHAction.View, FSHResource.Rooms, IsBasic: true),
+        new("Search Rooms", FSHAction.Search, FSHResource.Rooms, IsBasic: true),
+        new("Create Rooms", FSHAction.Create, FSHResource.Rooms),
+        new("Update Rooms", FSHAction.Update, FSHResource.Rooms),
+        new("Delete Rooms", FSHAction.Delete, FSHResource.Rooms),
+        new("Generate Rooms", FSHAction.Generate, FSHResource.Rooms),
+        new("Clean Rooms", FSHAction.Clean, FSHResource.Rooms),
+        new("View Employees", FSHAction.View, FSHResource.Employees, IsBasic: true),
+        new("Search Employees", FSHAction.Search, FSHResource.Employees, IsBasic: true),
+        new("Create Employees", FSHAction.Create, FSHResource.Employees),
+        new("Update Employees", FSHAction.Update, FSHResource.Employees),
+        new("Delete Employees", FSHAction.Delete, FSHResource.Employees),
+        new("Generate Employees", FSHAction.Generate, FSHResource.Employees),
+        new("Clean Employees", FSHAction.Clean, FSHResource.Employees)
     };
 
     public static IReadOnlyList<FSHPermission> All { get; } = new ReadOnlyCollection<FSHPermission>(_all);
