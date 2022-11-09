@@ -6,7 +6,7 @@
     <version>0.0.6-rc</version>
     <authors>Mukesh Murugan</authors>
     <description>
-      Clean Architecture Template for .NET 6.0 WebAPI built with Multitenancy Support.
+      Clean Architecture Template for .NET 7.0 WebAPI built with Multitenancy Support.
     </description>
     <language>en-US</language>
     <license type="expression">MIT</license>

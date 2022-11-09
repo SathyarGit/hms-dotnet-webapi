@@ -5,8 +5,8 @@ namespace FSH.WebApi.Application.HMS.Employees;
 public class ExportEmployeesRequest : BaseFilter, IRequest<Stream>
 {
     public DefaultIdType? DepartmentId { get; set; }
-    //public decimal? MinimumRate { get; set; }
-    //public decimal? MaximumRate { get; set; }
+    // public decimal? MinimumRate { get; set; }
+    // public decimal? MaximumRate { get; set; }
 }
 
 public class ExportEmployeesRequestHandler : IRequestHandler<ExportEmployeesRequest, Stream>

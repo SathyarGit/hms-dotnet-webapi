@@ -28,7 +28,7 @@ The goal of this repository is to provide a complete and feature-rich starting p
 
 ## Features
 
-- [x] Built on .NET 6.0
+- [x] Built on .NET 7.0
 - [x] Follows Clean Architecture Principles
 - [x] Domain Driven Design
 - [ ] Completely Documented at [fullstackhero.net](https://fullstackhero.net)

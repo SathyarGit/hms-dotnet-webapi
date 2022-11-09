@@ -3,8 +3,8 @@ namespace FSH.WebApi.Application.HMS.Rooms;
 public class SearchRoomsRequest : PaginationFilter, IRequest<PaginationResponse<RoomDto>>
 {
     public DefaultIdType? FloorId { get; set; }
-    //public decimal? MinimumRate { get; set; }
-    //public decimal? MaximumRate { get; set; }
+    // public decimal? MinimumRate { get; set; }
+    // public decimal? MaximumRate { get; set; }
 }
 
 public class SearchRoomsRequestHandler : IRequestHandler<SearchRoomsRequest, PaginationResponse<RoomDto>>
