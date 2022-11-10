@@ -1,20 +1,20 @@
 namespace FSH.WebApi.Domain.HMS;
 
-public class Floor : AuditableEntity, IAggregateRoot
+public class Transactiontype : AuditableEntity, IAggregateRoot
 {
     public string Name { get; private set; }
     public string? Description { get; private set; }
 
-    public virtual ICollection<Room> Rooms { get; set; }
+    public virtual ICollection<Accountentry> Accountentries { get; set; }
 
-    public Floor(string name, string? description)
+    public Transactiontype(string name, string? description)
     {
         Name = name;
         Description = description;
-        Rooms = new HashSet<Room>();
+        Accountentries = new HashSet<Accountentry>();
     }
 
-    public Floor Update(string? name, string? description)
+    public Transactiontype Update(string? name, string? description)
     {
         if (name is not null && Name?.Equals(name) is not true) Name = name;
         if (description is not null && Description?.Equals(description) is not true) Description = description;

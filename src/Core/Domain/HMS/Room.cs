@@ -20,7 +20,6 @@ public class Room : AuditableEntity, IAggregateRoot
         MaintenanceNotes = maintenanceNotes;
         FloorId = floorId;
         ImagePath = imagePath;
-
     }
 
     public Room Update(int? roomNumber, int? numberOfBeds, string? notes, string? maintenanceNotes, DefaultIdType? floorId, string? imagePath)
