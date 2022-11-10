@@ -11,7 +11,6 @@ public class Room : AuditableEntity, IAggregateRoot
     public DefaultIdType FloorId { get; private set; }
     public virtual Floor Floor { get; private set; } = default!;
 
-
     public Room(int roomNumber, int numberOfBeds, string? notes, string? maintenanceNotes, DefaultIdType floorId, string? imagePath)
     {
         RoomNumber = roomNumber;

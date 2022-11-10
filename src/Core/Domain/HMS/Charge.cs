@@ -18,13 +18,13 @@ public class Charge : AuditableEntity, IAggregateRoot
 
     public Charge(DateTime? chargeDate, DefaultIdType? folioId, int? amount, string? description, DefaultIdType? departmentId, DefaultIdType? transactionstatusId, DefaultIdType? travelagentId)
     {
-        ChargeDate= chargeDate;
-        FolioId= folioId;
-        Amount= amount;
-        Description= description;
-        DepartmentId= departmentId;
-        TransactionstatusId= transactionstatusId;
-        TravelagentId= travelagentId;
+        ChargeDate = chargeDate;
+        FolioId = folioId;
+        Amount = amount;
+        Description = description;
+        DepartmentId = departmentId;
+        TransactionstatusId = transactionstatusId;
+        TravelagentId = travelagentId;
     }
 
     public Charge Update(DateTime? chargeDate, DefaultIdType? folioId, int? amount, string? description, DefaultIdType? departmentId, DefaultIdType? transactionstatusId, DefaultIdType? travelagentId)

@@ -5,11 +5,11 @@ using System.Transactions;
 namespace FSH.WebApi.Domain.HMS;
 
 public class Purchase : AuditableEntity, IAggregateRoot
-{ 
+{
     public DateTime? PurchaseDate { get; private set; }
     public DefaultIdType? VendorId { get; private set; }
     public int? Amount { get; private set; }
-    public string? Description{ get; private set; }
+    public string? Description { get; private set; }
     public DefaultIdType? DepartmentId { get; private set; }
     public string? BillsOrInvoiceNumber { get; private set; }
     public string? ImagePath { get; private set; }
