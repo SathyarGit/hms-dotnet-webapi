@@ -2,14 +2,14 @@ using FSH.WebApi.Domain.Common.Events;
 
 namespace FSH.WebApi.Application.HMS.Floors;
 
-public class UpdateFloorRequest : IRequest<Guid>
+public class UpdateFloorRequest : IRequest<DefaultIdType>
 {
-    public Guid Id { get; set; }
+    public DefaultIdType Id { get; set; }
     public string Name { get; set; } = default!;
     public string? Description { get; set; }
 }
 
-public class UpdateFloorRequestHandler : IRequestHandler<UpdateFloorRequest, Guid>
+public class UpdateFloorRequestHandler : IRequestHandler<UpdateFloorRequest, DefaultIdType>
 {
     private readonly IRepository<Floor> _repository;
     private readonly IStringLocalizer _t;
@@ -17,7 +17,7 @@ public class UpdateFloorRequestHandler : IRequestHandler<UpdateFloorRequest, Gui
     public UpdateFloorRequestHandler(IRepository<Floor> repository, IStringLocalizer<UpdateFloorRequestHandler> localizer) =>
         (_repository, _t) = (repository, localizer);
 
-    public async Task<Guid> Handle(UpdateFloorRequest request, CancellationToken cancellationToken)
+    public async Task<DefaultIdType> Handle(UpdateFloorRequest request, CancellationToken cancellationToken)
     {
         var floor = await _repository.GetByIdAsync(request.Id, cancellationToken);
 

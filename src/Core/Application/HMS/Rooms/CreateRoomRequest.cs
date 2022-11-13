@@ -10,6 +10,7 @@ public class CreateRoomRequest : IRequest<DefaultIdType>
     public string? MaintenanceNotes { get; set; }
     public FileUploadRequest? Image { get; set; }
     public DefaultIdType FloorId { get; set; }
+    public DefaultIdType RoomtypeId { get; set; }
 }
 
 public class CreateRoomRequestHandler : IRequestHandler<CreateRoomRequest, DefaultIdType>
@@ -24,7 +25,7 @@ public class CreateRoomRequestHandler : IRequestHandler<CreateRoomRequest, Defau
     {
         string roomImagePath = await _file.UploadAsync<Room>(request.Image, FileType.Image, cancellationToken);
 
-        var room = new Room(request.RoomNumber, request.NumberOfBeds, request.Notes, request.MaintenanceNotes, request.FloorId, roomImagePath);
+        var room = new Room(request.RoomNumber, request.NumberOfBeds, request.Notes, request.MaintenanceNotes, request.FloorId, request.RoomtypeId, roomImagePath);
 
         // Add Domain Events to be raised after the commit
         room.DomainEvents.Add(EntityCreatedEvent.WithEntity(room));

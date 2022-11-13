@@ -1,6 +1,6 @@
 using FSH.WebApi.Domain.Common.Events;
 
-namespace FSH.WebApi.Application.Catalog.Floors.EventHandlers;
+namespace FSH.WebApi.Application.HMS.Floors.EventHandlers;
 
 public class FloorDeletedEventHandler : EventNotificationHandler<EntityDeletedEvent<Floor>>
 {

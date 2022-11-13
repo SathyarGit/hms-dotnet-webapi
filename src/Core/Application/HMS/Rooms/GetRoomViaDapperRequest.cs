@@ -35,7 +35,9 @@ public class GetRoomViaDapperRequestHandler : IRequestHandler<GetRoomViaDapperRe
             MaintenanceNotes = room.MaintenanceNotes,
             ImagePath = room.ImagePath,
             FloorId = room.FloorId,
-            FloorName = string.Empty
+            RoomtypeId = room.RoomtypeId,
+            FloorName = string.Empty,
+            RoomtypeName = string.Empty
         };
     }
 }

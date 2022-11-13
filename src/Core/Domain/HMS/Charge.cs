@@ -15,7 +15,6 @@ public class Charge : AuditableEntity, IAggregateRoot
     public virtual Travelagent Travelagent { get; set; } = default!;
     public virtual Transactionstatus Transactionstatus { get; set; } = default!;
 
-
     public Charge(DateTime? chargeDate, DefaultIdType? folioId, int? amount, string? description, DefaultIdType? departmentId, DefaultIdType? transactionstatusId, DefaultIdType? travelagentId)
     {
         ChargeDate = chargeDate;

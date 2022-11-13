@@ -2,6 +2,6 @@
 
 public class EmployeesByDepartmentSpec : Specification<Employee>
 {
-    public EmployeesByDepartmentSpec(DefaultIdType brandId) =>
-        Query.Where(p => p.DepartmentId == brandId);
+    public EmployeesByDepartmentSpec(DefaultIdType departmentId) =>
+        Query.Where(p => p.DepartmentId == departmentId);
 }

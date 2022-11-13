@@ -5,6 +5,7 @@ namespace FSH.WebApi.Application.HMS.Employees;
 public class CreateEmployeeRequest : IRequest<DefaultIdType>
 {
     public string Name { get; set; } = default!;
+    public string? Address { get; set; }
     public string? Notes { get; set; }
     public DefaultIdType DepartmentId { get; set; }
     public FileUploadRequest? Image { get; set; }
@@ -23,7 +24,7 @@ public class CreateEmployeeRequestHandler : IRequestHandler<CreateEmployeeReques
     {
         string employeeImagePath = await _file.UploadAsync<Employee>(request.Image, FileType.Image, cancellationToken);
 
-        var employee = new Employee(request.Name, request.Notes, request.DepartmentId, employeeImagePath);
+        var employee = new Employee(request.Name, request.Address, request.Notes, request.DepartmentId, employeeImagePath);
 
         // Add Domain Events to be raised after the commit
         employee.DomainEvents.Add(EntityCreatedEvent.WithEntity(employee));

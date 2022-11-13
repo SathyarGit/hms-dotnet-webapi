@@ -2,20 +2,20 @@ using FSH.WebApi.Domain.Common.Events;
 
 namespace FSH.WebApi.Application.HMS.Floors;
 
-public class CreateFloorRequest : IRequest<Guid>
+public class CreateFloorRequest : IRequest<DefaultIdType>
 {
     public string Name { get; set; } = default!;
     public string? Description { get; set; }
 }
 
-public class CreateFloorRequestHandler : IRequestHandler<CreateFloorRequest, Guid>
+public class CreateFloorRequestHandler : IRequestHandler<CreateFloorRequest, DefaultIdType>
 {
     private readonly IRepository<Floor> _repository;
 
     public CreateFloorRequestHandler(IRepository<Floor> repository) =>
         _repository = repository;
 
-    public async Task<Guid> Handle(CreateFloorRequest request, CancellationToken cancellationToken)
+    public async Task<DefaultIdType> Handle(CreateFloorRequest request, CancellationToken cancellationToken)
     {
         var floor = new Floor(request.Name, request.Description);
 

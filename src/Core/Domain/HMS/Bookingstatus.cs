@@ -1,4 +1,3 @@
-
 namespace FSH.WebApi.Domain.HMS;
 
 public class Bookingstatus : AuditableEntity, IAggregateRoot

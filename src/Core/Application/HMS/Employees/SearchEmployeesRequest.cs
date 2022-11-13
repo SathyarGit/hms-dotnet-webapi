@@ -3,8 +3,6 @@ namespace FSH.WebApi.Application.HMS.Employees;
 public class SearchEmployeesRequest : PaginationFilter, IRequest<PaginationResponse<EmployeeDto>>
 {
     public DefaultIdType? DepartmentId { get; set; }
-    // public decimal? MinimumRate { get; set; }
-    // public decimal? MaximumRate { get; set; }
 }
 
 public class SearchEmployeesRequestHandler : IRequestHandler<SearchEmployeesRequest, PaginationResponse<EmployeeDto>>

@@ -9,5 +9,7 @@ public class RoomDto : IDto
     public string? MaintenanceNotes { get; set; }
     public string? ImagePath { get; set; }
     public DefaultIdType FloorId { get; set; }
+    public DefaultIdType RoomtypeId { get; set; }
     public string FloorName { get; set; } = default!;
+    public string RoomtypeName { get; set; } = default!;
 }

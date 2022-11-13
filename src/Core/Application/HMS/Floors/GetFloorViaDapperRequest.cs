@@ -4,9 +4,9 @@ namespace FSH.WebApi.Application.HMS.Floors;
 
 public class GetFloorViaDapperRequest : IRequest<FloorDto>
 {
-    public Guid Id { get; set; }
+    public DefaultIdType Id { get; set; }
 
-    public GetFloorViaDapperRequest(Guid id) => Id = id;
+    public GetFloorViaDapperRequest(DefaultIdType id) => Id = id;
 }
 
 public class GetFloorViaDapperRequestHandler : IRequestHandler<GetFloorViaDapperRequest, FloorDto>

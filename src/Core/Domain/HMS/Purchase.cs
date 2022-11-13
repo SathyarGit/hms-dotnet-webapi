@@ -35,16 +35,22 @@ public class Purchase : AuditableEntity, IAggregateRoot
 
     }
 
-    public Purchase Update(DateTime? purchaseDate, DefaultIdType? vendorId, int? amount, string? description, DefaultIdType? departmentId, string? billsOrInvoiceNumber, string imagePath, DefaultIdType? transactionstatusId)
+    public Purchase Update(DateTime? purchaseDate, DefaultIdType? vendorId, int? amount, string? description, DefaultIdType? departmentId, string? billsOrInvoiceNumber, string? imagePath, DefaultIdType? transactionstatusId)
     {
         if (purchaseDate.HasValue && PurchaseDate != purchaseDate) PurchaseDate = purchaseDate.Value;
         if (vendorId.HasValue && vendorId.Value != Guid.Empty && !VendorId.Equals(vendorId.Value)) VendorId = vendorId.Value;
-        if (amount.HasValue && Amount!= amount) Amount = amount.Value;
+        if (amount.HasValue && Amount != amount) Amount = amount.Value;
         if (description is not null && Description?.Equals(description) is not true) Description = description;
         if (departmentId.HasValue && departmentId.Value != Guid.Empty && !DepartmentId.Equals(departmentId.Value)) DepartmentId = departmentId.Value;
         if (billsOrInvoiceNumber is not null && BillsOrInvoiceNumber?.Equals(billsOrInvoiceNumber) is not true) BillsOrInvoiceNumber = billsOrInvoiceNumber;
         if (imagePath is not null && ImagePath?.Equals(imagePath) is not true) ImagePath = imagePath;
         if (transactionstatusId.HasValue && transactionstatusId.Value != Guid.Empty && !TransactionstatusId.Equals(transactionstatusId.Value)) TransactionstatusId = transactionstatusId.Value;
+        return this;
+    }
+
+    public Purchase ClearImagePath()
+    {
+        ImagePath = string.Empty;
         return this;
     }
 }

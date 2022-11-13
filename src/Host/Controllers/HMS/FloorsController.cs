@@ -1,12 +1,12 @@
 ﻿using FSH.WebApi.Application.HMS.Floors;
 
-namespace FSH.WebApi.Host.Controllers.Catalog;
+namespace FSH.WebApi.Host.Controllers.HMS;
 
 public class FloorsController : VersionedApiController
 {
     [HttpPost("search")]
     [MustHavePermission(FSHAction.Search, FSHResource.Floors)]
-    [OpenApiOperation("Search products using available filters.", "")]
+    [OpenApiOperation("Search floors using available filters.", "")]
     public Task<PaginationResponse<FloorDto>> SearchAsync(SearchFloorsRequest request)
     {
         return Mediator.Send(request);
@@ -14,7 +14,7 @@ public class FloorsController : VersionedApiController
 
     [HttpGet("{id:guid}")]
     [MustHavePermission(FSHAction.View, FSHResource.Floors)]
-    [OpenApiOperation("Get product details.", "")]
+    [OpenApiOperation("Get floor details.", "")]
     public Task<FloorDetailsDto> GetAsync(Guid id)
     {
         return Mediator.Send(new GetFloorRequest(id));
@@ -22,7 +22,7 @@ public class FloorsController : VersionedApiController
 
     [HttpGet("dapper")]
     [MustHavePermission(FSHAction.View, FSHResource.Floors)]
-    [OpenApiOperation("Get product details via dapper.", "")]
+    [OpenApiOperation("Get floor details via dapper.", "")]
     public Task<FloorDto> GetDapperAsync(Guid id)
     {
         return Mediator.Send(new GetFloorViaDapperRequest(id));
@@ -30,7 +30,7 @@ public class FloorsController : VersionedApiController
 
     [HttpPost]
     [MustHavePermission(FSHAction.Create, FSHResource.Floors)]
-    [OpenApiOperation("Create a new product.", "")]
+    [OpenApiOperation("Create a new floor.", "")]
     public Task<Guid> CreateAsync(CreateFloorRequest request)
     {
         return Mediator.Send(request);
@@ -38,7 +38,7 @@ public class FloorsController : VersionedApiController
 
     [HttpPut("{id:guid}")]
     [MustHavePermission(FSHAction.Update, FSHResource.Floors)]
-    [OpenApiOperation("Update a product.", "")]
+    [OpenApiOperation("Update a floor.", "")]
     public async Task<ActionResult<Guid>> UpdateAsync(UpdateFloorRequest request, Guid id)
     {
         return id != request.Id
@@ -48,7 +48,7 @@ public class FloorsController : VersionedApiController
 
     [HttpDelete("{id:guid}")]
     [MustHavePermission(FSHAction.Delete, FSHResource.Floors)]
-    [OpenApiOperation("Delete a product.", "")]
+    [OpenApiOperation("Delete a floor.", "")]
     public Task<Guid> DeleteAsync(Guid id)
     {
         return Mediator.Send(new DeleteFloorRequest(id));

@@ -2,7 +2,7 @@ namespace FSH.WebApi.Application.HMS.Rooms;
 
 public class CreateRoomRequestValidator : CustomValidator<CreateRoomRequest>
 {
-    public CreateRoomRequestValidator(IReadRepository<Room> roomRepo, IReadRepository<Floor> floorRepo, IStringLocalizer<CreateRoomRequestValidator> T)
+    public CreateRoomRequestValidator(IReadRepository<Room> roomRepo, IReadRepository<Floor> floorRepo, IReadRepository<Roomtype> roomtypeRepo, IStringLocalizer<CreateRoomRequestValidator> T)
     {
         RuleFor(p => p.RoomNumber)
             .GreaterThanOrEqualTo(1)
@@ -19,5 +19,10 @@ public class CreateRoomRequestValidator : CustomValidator<CreateRoomRequest>
             .NotEmpty()
             .MustAsync(async (id, ct) => await floorRepo.GetByIdAsync(id, ct) is not null)
                 .WithMessage((_, id) => T["Floor {0} Not Found.", id]);
+
+        RuleFor(p => p.RoomtypeId)
+            .NotEmpty()
+            .MustAsync(async (id, ct) => await roomtypeRepo.GetByIdAsync(id, ct) is not null)
+                .WithMessage((_, id) => T["Roomtype {0} Not Found.", id]);
     }
 }

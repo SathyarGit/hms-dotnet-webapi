@@ -1,25 +1,23 @@
-
 namespace FSH.WebApi.Domain.HMS;
 
 public class Travelagent : AuditableEntity, IAggregateRoot
 {
-    public string TravelagentName { get; private set; }
-    public string AddressLine1 { get; private set; }
-    public string AddressLine2 { get; private set; }
-    public string City { get; private set; }
-    public string Country { get; private set; }
-    public string Pincode { get; private set; }
-    public string PhoneNumber { get; private set; }
-    public string Email { get; private set; }
-    public string Notes { get; private set; }
+    public string Name { get; private set; }
+    public string? AddressLine1 { get; private set; }
+    public string? AddressLine2 { get; private set; }
+    public string? City { get; private set; }
+    public string? Country { get; private set; }
+    public string? Pincode { get; private set; }
+    public string? PhoneNumber { get; private set; }
+    public string? Email { get; private set; }
+    public string? Notes { get; private set; }
 
     public virtual ICollection<Booking> Bookings { get; private set; } = new HashSet<Booking>();
     public virtual ICollection<Charge> Charges { get; private set; } = new HashSet<Charge>();
 
-
-    public Travelagent(string travelagentName, string? addressLine1, string? addressLine2, string? city, string? country, string? pincode, string? phoneNumber, string? email, string? notes)
+    public Travelagent(string name, string? addressLine1, string? addressLine2, string? city, string? country, string? pincode, string? phoneNumber, string? email, string? notes)
     {
-        TravelagentName = travelagentName;
+        Name = name;
         AddressLine1 = addressLine1 ?? string.Empty;
         AddressLine2 = addressLine2 ?? string.Empty;
         City = city ?? string.Empty;
@@ -30,9 +28,9 @@ public class Travelagent : AuditableEntity, IAggregateRoot
         Notes = notes ?? string.Empty;
     }
 
-    public Travelagent Update(string? travelagentName, string? addressLine1, string? addressLine2, string? city, string? country, string? pincode, string? phoneNumber, string? email, string? notes)
+    public Travelagent Update(string? name, string? addressLine1, string? addressLine2, string? city, string? country, string? pincode, string? phoneNumber, string? email, string? notes)
     {
-        if (travelagentName is not null && TravelagentName?.Equals(travelagentName) is not true) TravelagentName = travelagentName;
+        if (name is not null && Name?.Equals(name) is not true) Name = name;
         if (addressLine1 is not null && AddressLine1?.Equals(addressLine1) is not true) AddressLine1 = addressLine1;
         if (addressLine2 is not null && AddressLine2?.Equals(addressLine2) is not true) AddressLine2 = addressLine2;
         if (city is not null && City?.Equals(city) is not true) City = city;

@@ -18,7 +18,7 @@ namespace Migrators.PostgreSQL.Migrations.Application
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("Catalog")
-                .HasAnnotation("ProductVersion", "6.0.5")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -123,6 +123,406 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.HasAnnotation("Finbuckle:MultiTenant", true);
                 });
 
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Accountentry", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("Amount")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DepartmentId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<Guid?>("ExpensecategoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("FolioId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("PaymentmodeId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("PurchaseId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<DateTime?>("TransactionDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("TransactiontypeId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("ExpensecategoryId");
+
+                    b.HasIndex("FolioId");
+
+                    b.HasIndex("PaymentmodeId");
+
+                    b.HasIndex("PurchaseId");
+
+                    b.HasIndex("TransactiontypeId");
+
+                    b.ToTable("Accountentry", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Booking", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("Amount")
+                        .HasColumnType("integer");
+
+                    b.Property<bool?>("BookingMaterialised")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid?>("BookingstatusId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("CheckinDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("CheckoutDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CustomerId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<int?>("NumberOfAdults")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("NumberOfChildren")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("NumberOfRooms")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<Guid?>("TravelagentId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookingstatusId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("TravelagentId");
+
+                    b.ToTable("Booking", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Bookingstatus", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("character varying(32)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bookingstatus", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Charge", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("Amount")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("ChargeDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DepartmentId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<Guid?>("FolioId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<Guid?>("TransactionstatusId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("TravelagentId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("FolioId");
+
+                    b.HasIndex("TransactionstatusId");
+
+                    b.HasIndex("TravelagentId");
+
+                    b.ToTable("Charge", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Customer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<string>("AddressLine2")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("character varying(32)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("character varying(32)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CustclassificationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CustomerclassificationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("character varying(512)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("character varying(32)");
+
+                    b.Property<string>("Pincode")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("character varying(32)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerclassificationId");
+
+                    b.ToTable("Customer", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Customerclassification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customerclassification", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
             modelBuilder.Entity("FSH.WebApi.Domain.HMS.Department", b =>
                 {
                     b.Property<Guid>("Id")
@@ -173,6 +573,9 @@ namespace Migrators.PostgreSQL.Migrations.Application
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("uuid");
 
@@ -215,6 +618,50 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("Employee", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Expensecategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Expensecategory", "HMS");
 
                     b.HasAnnotation("Finbuckle:MultiTenant", true);
                 });
@@ -263,6 +710,213 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.HasAnnotation("Finbuckle:MultiTenant", true);
                 });
 
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Folio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("BookingId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<Guid?>("FoliotypeId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookingId")
+                        .IsUnique();
+
+                    b.HasIndex("FoliotypeId");
+
+                    b.ToTable("Folio", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Foliotype", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Foliotype", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Paymentmode", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Paymentmode", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Purchase", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("Amount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("BillsOrInvoiceNumber")
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DepartmentId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("PurchaseDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<Guid?>("TransactionstatusId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("VendorId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("TransactionstatusId");
+
+                    b.HasIndex("VendorId");
+
+                    b.ToTable("Purchase", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
             modelBuilder.Entity("FSH.WebApi.Domain.HMS.Room", b =>
                 {
                     b.Property<Guid>("Id")
@@ -307,6 +961,12 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.Property<int>("RoomNumber")
                         .HasColumnType("integer");
 
+                    b.Property<Guid?>("RoomstatusId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("RoomtypeId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("TenantId")
                         .IsRequired()
                         .HasMaxLength(64)
@@ -316,7 +976,340 @@ namespace Migrators.PostgreSQL.Migrations.Application
 
                     b.HasIndex("FloorId");
 
+                    b.HasIndex("RoomstatusId");
+
+                    b.HasIndex("RoomtypeId");
+
                     b.ToTable("Room", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Roomsbooked", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("BookingId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("RoomId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("RoomRate")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookingId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("Roomsbooked", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Roomstatus", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roomstatus", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Roomtype", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roomtype", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Transactionstatus", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Transactionstatus", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Transactiontype", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Transactiontype", "HMS");
+
+                    b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Travelagent", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AddressLine1")
+                        .HasColumnType("text");
+
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("text");
+
+                    b.Property<string>("City")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Pincode")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Travelagent", "Catalog");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Vendor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(512)
+                        .HasColumnType("character varying(512)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vendor", "HMS");
 
                     b.HasAnnotation("Finbuckle:MultiTenant", true);
                 });
@@ -659,6 +1652,104 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.Navigation("Brand");
                 });
 
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Accountentry", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.HMS.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Expensecategory", "Expensecategory")
+                        .WithMany("Accountentries")
+                        .HasForeignKey("ExpensecategoryId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Folio", "Folio")
+                        .WithMany("Accountentries")
+                        .HasForeignKey("FolioId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Paymentmode", "Paymentmode")
+                        .WithMany("Accountentries")
+                        .HasForeignKey("PaymentmodeId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Purchase", "Purchase")
+                        .WithMany("Accountentries")
+                        .HasForeignKey("PurchaseId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Transactiontype", "Transactiontype")
+                        .WithMany("Accountentries")
+                        .HasForeignKey("TransactiontypeId");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Expensecategory");
+
+                    b.Navigation("Folio");
+
+                    b.Navigation("Paymentmode");
+
+                    b.Navigation("Purchase");
+
+                    b.Navigation("Transactiontype");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Booking", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.HMS.Bookingstatus", "Bookingstatus")
+                        .WithMany("Bookings")
+                        .HasForeignKey("BookingstatusId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Customer", "Customer")
+                        .WithMany("Bookings")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Travelagent", "Travelagent")
+                        .WithMany("Bookings")
+                        .HasForeignKey("TravelagentId");
+
+                    b.Navigation("Bookingstatus");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Travelagent");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Charge", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.HMS.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Folio", "Folio")
+                        .WithMany("Charges")
+                        .HasForeignKey("FolioId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Transactionstatus", "Transactionstatus")
+                        .WithMany("Charges")
+                        .HasForeignKey("TransactionstatusId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Travelagent", "Travelagent")
+                        .WithMany("Charges")
+                        .HasForeignKey("TravelagentId");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Folio");
+
+                    b.Navigation("Transactionstatus");
+
+                    b.Navigation("Travelagent");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Customer", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.HMS.Customerclassification", "Customerclassification")
+                        .WithMany("Customers")
+                        .HasForeignKey("CustomerclassificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customerclassification");
+                });
+
             modelBuilder.Entity("FSH.WebApi.Domain.HMS.Employee", b =>
                 {
                     b.HasOne("FSH.WebApi.Domain.HMS.Department", "Department")
@@ -670,15 +1761,78 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.Navigation("Department");
                 });
 
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Folio", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.HMS.Booking", "Booking")
+                        .WithOne("Folio")
+                        .HasForeignKey("FSH.WebApi.Domain.HMS.Folio", "BookingId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Foliotype", "Foliotype")
+                        .WithMany("Folios")
+                        .HasForeignKey("FoliotypeId");
+
+                    b.Navigation("Booking");
+
+                    b.Navigation("Foliotype");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Purchase", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.HMS.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Transactionstatus", "Transactionstatus")
+                        .WithMany("Purchases")
+                        .HasForeignKey("TransactionstatusId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Vendor", "Vendor")
+                        .WithMany()
+                        .HasForeignKey("VendorId");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Transactionstatus");
+
+                    b.Navigation("Vendor");
+                });
+
             modelBuilder.Entity("FSH.WebApi.Domain.HMS.Room", b =>
                 {
                     b.HasOne("FSH.WebApi.Domain.HMS.Floor", "Floor")
-                        .WithMany()
+                        .WithMany("Rooms")
                         .HasForeignKey("FloorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FSH.WebApi.Domain.HMS.Roomstatus", null)
+                        .WithMany("Rooms")
+                        .HasForeignKey("RoomstatusId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Roomtype", "Roomtype")
+                        .WithMany("Rooms")
+                        .HasForeignKey("RoomtypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Floor");
+
+                    b.Navigation("Roomtype");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Roomsbooked", b =>
+                {
+                    b.HasOne("FSH.WebApi.Domain.HMS.Booking", "Booking")
+                        .WithMany("Roomsbookeds")
+                        .HasForeignKey("BookingId");
+
+                    b.HasOne("FSH.WebApi.Domain.HMS.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId");
+
+                    b.Navigation("Booking");
+
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("FSH.WebApi.Infrastructure.Identity.ApplicationRoleClaim", b =>
@@ -730,6 +1884,90 @@ namespace Migrators.PostgreSQL.Migrations.Application
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Booking", b =>
+                {
+                    b.Navigation("Folio")
+                        .IsRequired();
+
+                    b.Navigation("Roomsbookeds");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Bookingstatus", b =>
+                {
+                    b.Navigation("Bookings");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Customer", b =>
+                {
+                    b.Navigation("Bookings");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Customerclassification", b =>
+                {
+                    b.Navigation("Customers");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Expensecategory", b =>
+                {
+                    b.Navigation("Accountentries");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Floor", b =>
+                {
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Folio", b =>
+                {
+                    b.Navigation("Accountentries");
+
+                    b.Navigation("Charges");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Foliotype", b =>
+                {
+                    b.Navigation("Folios");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Paymentmode", b =>
+                {
+                    b.Navigation("Accountentries");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Purchase", b =>
+                {
+                    b.Navigation("Accountentries");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Roomstatus", b =>
+                {
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Roomtype", b =>
+                {
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Transactionstatus", b =>
+                {
+                    b.Navigation("Charges");
+
+                    b.Navigation("Purchases");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Transactiontype", b =>
+                {
+                    b.Navigation("Accountentries");
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.HMS.Travelagent", b =>
+                {
+                    b.Navigation("Bookings");
+
+                    b.Navigation("Charges");
                 });
 #pragma warning restore 612, 618
         }

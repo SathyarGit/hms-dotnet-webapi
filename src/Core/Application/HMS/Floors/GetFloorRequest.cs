@@ -2,9 +2,9 @@
 
 public class GetFloorRequest : IRequest<FloorDetailsDto>
 {
-    public Guid Id { get; set; }
+    public DefaultIdType Id { get; set; }
 
-    public GetFloorRequest(Guid id) => Id = id;
+    public GetFloorRequest(DefaultIdType id) => Id = id;
 }
 
 public class GetFloorRequestHandler : IRequestHandler<GetFloorRequest, FloorDetailsDto>

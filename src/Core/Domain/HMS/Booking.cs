@@ -1,5 +1,4 @@
-﻿
-namespace FSH.WebApi.Domain.HMS;
+﻿namespace FSH.WebApi.Domain.HMS;
 
 public class Booking : AuditableEntity, IAggregateRoot
 {
@@ -14,7 +13,6 @@ public class Booking : AuditableEntity, IAggregateRoot
     public bool? BookingMaterialised { get; private set; }
     public DefaultIdType? CustomerId { get; private set; }
     public DefaultIdType? TravelagentId { get; private set; }
-    public DefaultIdType? FolioId { get; private set; }
 
     public virtual Bookingstatus Bookingstatus { get; set; } = default!;
     public virtual Customer Customer { get; set; } = default!;
@@ -23,10 +21,18 @@ public class Booking : AuditableEntity, IAggregateRoot
 
     public virtual ICollection<Roomsbooked> Roomsbookeds { get; set; } = default!;
 
-
-    public Booking(DateTime? checkinDate, DateTime? checkoutDate, int? numberOfRooms, int? numberOfAdults,
-                    int? numberOfChildren, DefaultIdType? bookingstatusId, int? amount, string? notes,
-                    bool? bookingMaterialised, DefaultIdType? customerId, DefaultIdType? travelagentId, DefaultIdType? folioId)
+    public Booking(
+                   DateTime? checkinDate,
+                   DateTime? checkoutDate,
+                   int? numberOfRooms,
+                   int? numberOfAdults,
+                   int? numberOfChildren,
+                   DefaultIdType? bookingstatusId,
+                   int? amount,
+                   string? notes,
+                   bool? bookingMaterialised,
+                   DefaultIdType? customerId,
+                   DefaultIdType? travelagentId)
     {
         CheckinDate = checkinDate;
         CheckoutDate = checkoutDate;
@@ -39,12 +45,10 @@ public class Booking : AuditableEntity, IAggregateRoot
         BookingMaterialised = bookingMaterialised;
         CustomerId = customerId;
         TravelagentId = travelagentId;
-        FolioId = folioId;
+        // FolioId = folioId;
     }
 
-    public Booking Update(DateTime? checkinDate, DateTime? checkoutDate, int? numberOfRooms, int? numberOfAdults,
-                    int? numberOfChildren, DefaultIdType? bookingstatusId, int? amount, string? notes,
-                    bool? bookingMaterialised, DefaultIdType? customerId, DefaultIdType? travelagentId, DefaultIdType? folioId)
+    public Booking Update(DateTime? checkinDate, DateTime? checkoutDate, int? numberOfRooms, int? numberOfAdults, int? numberOfChildren, DefaultIdType? bookingstatusId, int? amount, string? notes, bool? bookingMaterialised, DefaultIdType? customerId, DefaultIdType? travelagentId)
     {
         if (checkinDate.HasValue && CheckinDate != checkinDate) CheckinDate = checkinDate.Value;
         if (checkoutDate.HasValue && CheckoutDate != checkoutDate) CheckoutDate = checkoutDate.Value;
@@ -57,7 +61,6 @@ public class Booking : AuditableEntity, IAggregateRoot
         if (bookingMaterialised.HasValue && BookingMaterialised != bookingMaterialised) BookingMaterialised = bookingMaterialised.Value;
         if (customerId.HasValue && customerId.Value != DefaultIdType.Empty && !CustomerId.Equals(customerId.Value)) CustomerId = customerId.Value;
         if (travelagentId.HasValue && travelagentId.Value != DefaultIdType.Empty && !TravelagentId.Equals(travelagentId.Value)) TravelagentId = travelagentId.Value;
-        if (folioId.HasValue && folioId.Value != DefaultIdType.Empty && !FolioId.Equals(folioId.Value)) FolioId = folioId.Value;
         return this;
     }
 }

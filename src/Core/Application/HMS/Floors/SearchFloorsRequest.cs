@@ -2,7 +2,7 @@ namespace FSH.WebApi.Application.HMS.Floors;
 
 public class SearchFloorsRequest : PaginationFilter, IRequest<PaginationResponse<FloorDto>>
 {
-    public Guid? BrandId { get; set; }
+    public DefaultIdType? BrandId { get; set; }
     public decimal? MinimumRate { get; set; }
     public decimal? MaximumRate { get; set; }
 }

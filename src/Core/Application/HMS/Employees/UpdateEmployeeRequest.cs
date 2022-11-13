@@ -6,6 +6,7 @@ public class UpdateEmployeeRequest : IRequest<DefaultIdType>
 {
     public DefaultIdType Id { get; set; }
     public string Name { get; set; } = default!;
+    public string? Address { get; set; }
     public string? Notes { get; set; }
     public DefaultIdType DepartmentId { get; set; }
     public bool DeleteCurrentImage { get; set; } = false;
@@ -14,9 +15,9 @@ public class UpdateEmployeeRequest : IRequest<DefaultIdType>
 
 public class UpdateEmployeeRequestHandler : IRequestHandler<UpdateEmployeeRequest, DefaultIdType>
 {
-    readonly IRepository<Employee> _repository;
-    readonly IStringLocalizer _t;
-    readonly IFileStorageService _file;
+    public readonly IRepository<Employee> _repository;
+    public readonly IStringLocalizer _t;
+    public readonly IFileStorageService _file;
 
     public UpdateEmployeeRequestHandler(IRepository<Employee> repository, IStringLocalizer<UpdateEmployeeRequestHandler> localizer, IFileStorageService file) =>
         (_repository, _t, _file) = (repository, localizer, file);
@@ -44,7 +45,7 @@ public class UpdateEmployeeRequestHandler : IRequestHandler<UpdateEmployeeReques
             ? await _file.UploadAsync<Employee>(request.Image, FileType.Image, cancellationToken)
             : null;
 
-        var updatedEmployee = employee.Update(request.Name, request.Notes, request.DepartmentId, employeeImagePath);
+        var updatedEmployee = employee.Update(request.Name, request.Address, request.Notes, request.DepartmentId, employeeImagePath);
 
         // Add Domain Events to be raised after the commit
         employee.DomainEvents.Add(EntityUpdatedEvent.WithEntity(employee));

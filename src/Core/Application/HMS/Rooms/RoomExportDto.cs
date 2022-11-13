@@ -7,4 +7,5 @@ public class RoomExportDto : IDto
     public string? Notes { get; set; }
     public string? MaintenanceNotes { get; set; }
     public string FloorName { get; set; } = default!;
+    public string RoomtypeName { get; set; } = default!;
 }

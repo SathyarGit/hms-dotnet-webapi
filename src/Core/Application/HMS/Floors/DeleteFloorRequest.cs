@@ -2,14 +2,14 @@
 
 namespace FSH.WebApi.Application.HMS.Floors;
 
-public class DeleteFloorRequest : IRequest<Guid>
+public class DeleteFloorRequest : IRequest<DefaultIdType>
 {
-    public Guid Id { get; set; }
+    public DefaultIdType Id { get; set; }
 
-    public DeleteFloorRequest(Guid id) => Id = id;
+    public DeleteFloorRequest(DefaultIdType id) => Id = id;
 }
 
-public class DeleteFloorRequestHandler : IRequestHandler<DeleteFloorRequest, Guid>
+public class DeleteFloorRequestHandler : IRequestHandler<DeleteFloorRequest, DefaultIdType>
 {
     private readonly IRepository<Floor> _repository;
     private readonly IStringLocalizer _t;
@@ -17,7 +17,7 @@ public class DeleteFloorRequestHandler : IRequestHandler<DeleteFloorRequest, Gui
     public DeleteFloorRequestHandler(IRepository<Floor> repository, IStringLocalizer<DeleteFloorRequestHandler> localizer) =>
         (_repository, _t) = (repository, localizer);
 
-    public async Task<Guid> Handle(DeleteFloorRequest request, CancellationToken cancellationToken)
+    public async Task<DefaultIdType> Handle(DeleteFloorRequest request, CancellationToken cancellationToken)
     {
         var floor = await _repository.GetByIdAsync(request.Id, cancellationToken);
 

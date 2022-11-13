@@ -5,8 +5,6 @@ namespace FSH.WebApi.Application.HMS.Employees;
 public class ExportEmployeesRequest : BaseFilter, IRequest<Stream>
 {
     public DefaultIdType? DepartmentId { get; set; }
-    // public decimal? MinimumRate { get; set; }
-    // public decimal? MaximumRate { get; set; }
 }
 
 public class ExportEmployeesRequestHandler : IRequestHandler<ExportEmployeesRequest, Stream>
@@ -37,6 +35,4 @@ public class ExportEmployeesWithDepartmentsSpecification : EntitiesByBaseFilterS
         Query
             .Include(p => p.Department)
             .Where(p => p.DepartmentId.Equals(request.DepartmentId!.Value), request.DepartmentId.HasValue);
-            //.Where(p => p.Rate >= request.MinimumRate!.Value, request.MinimumRate.HasValue)
-            //.Where(p => p.Rate <= request.MaximumRate!.Value, request.MaximumRate.HasValue);
 }

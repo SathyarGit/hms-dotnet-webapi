@@ -1,6 +1,6 @@
 ﻿using FSH.WebApi.Application.HMS.Employees;
 
-namespace FSH.WebApi.Host.Controllers.Catalog;
+namespace FSH.WebApi.Host.Controllers.HMS;
 
 public class EmployeesController : VersionedApiController
 {

@@ -2,7 +2,7 @@
 
 public class FloorByIdSpec : Specification<Floor, FloorDetailsDto>, ISingleResultSpecification
 {
-    public FloorByIdSpec(Guid id) =>
+    public FloorByIdSpec(DefaultIdType id) =>
         Query
             .Where(p => p.Id == id);
 }

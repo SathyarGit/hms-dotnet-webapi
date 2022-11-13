@@ -1,4 +1,5 @@
 using FSH.WebApi.Application.HMS.Floors;
+using FSH.WebApi.Application.HMS.Roomtypes;
 
 namespace FSH.WebApi.Application.HMS.Rooms;
 
@@ -11,4 +12,5 @@ public class RoomDetailsDto : IDto
     public string? MaintenanceNotes { get; set; }
     public string? ImagePath { get; set; }
     public FloorDto Floor { get; set; } = default!;
+    public RoomtypeDto Roomtype { get; set; } = default!;
 }
