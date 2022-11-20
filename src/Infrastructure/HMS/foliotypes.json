@@ -1,0 +1,22 @@
+[
+  {
+    "Id": "21c51fac-3579-4991-b97c-79e00440b137",
+    "Name": "Guest Folio",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "67b3acb0-d7e8-4ef5-8faa-187e955666bb",
+    "Name": "Master Folio",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "8c12a692-8e59-4193-979e-46c303c930ec",
+    "Name": "Non-guest Folio",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "e7201123-069a-445a-b0dd-c230472bd2f5",
+    "Name": "Employee Folio",
+    "Description": "Sample Data"
+  }
+]

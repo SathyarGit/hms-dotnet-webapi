@@ -1,0 +1,17 @@
+[
+  {
+    "Id": "a020e644-155a-4297-8d84-e3d31e0c6138",
+    "Name": "Regular",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "38002454-0a2f-48c0-a663-cf0b668c269a",
+    "Name": "New",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "6f976e3f-0c1c-45ab-9b86-0d824bc25ca7",
+    "Name": "VIP",
+    "Description": "Sample Data"
+  }
+]

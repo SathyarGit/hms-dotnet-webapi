@@ -1,0 +1,27 @@
+[
+  {
+    "Id": "51267024-db9b-4df7-a68b-87bd9e7301c8",
+    "Name": "Salary",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "0ee4b296-ed27-4778-9195-cc0c8a98cfca",
+    "Name": "Salary Advance",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "112338c5-0338-432d-b5ac-081c7f21b689",
+    "Name": "Maintenance",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "259c413d-4637-491f-9a71-6778f745cdab",
+    "Name": "Utility Bills",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "5265af69-9565-4b9b-afc0-fe83a0141530",
+    "Name": "Laundry",
+    "Description": "Sample Data"
+  }
+]

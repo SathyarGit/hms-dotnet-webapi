@@ -1,0 +1,27 @@
+[
+  {
+    "Id": "88e05e9a-2545-4ba9-be4a-0608eac5414a",
+    "Name": "Not Confirmed",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "ea07faf5-02da-47c5-8483-53f722a4aaf0",
+    "Name": "Confirmed - Part Paid",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "7f1fb060-0059-4ce0-8c4e-49456a366a08",
+    "Name": "Confirmed - Fully Paid",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "1b7f7a32-965a-4c18-ba23-2374046dfbd4",
+    "Name": "Confirmed - Not Paid",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "a2d9c97c-a69d-4e64-88f7-25f6b23f7fc1",
+    "Name": "Tentative",
+    "Description": "Sample Data"
+  }
+]

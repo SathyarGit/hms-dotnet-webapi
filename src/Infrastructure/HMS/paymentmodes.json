@@ -1,0 +1,37 @@
+[
+  {
+    "Id": "95454f28-4242-42b7-9dcf-65885709f674",
+    "Name": "Cash",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "2c526e08-0024-4303-bfc5-f00d4f32b8c2",
+    "Name": "Bank - HDFC Lodging",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "de63d076-35b8-471d-bf75-a138bf442246",
+    "Name": "Bank - HDFC Bar",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "0311c229-bf18-4736-86e6-024a262d1509",
+    "Name": "Bank - HDFC Restaurant",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "1fbfef66-29c8-4133-99b6-58757e1acb40",
+    "Name": "POS - HDFC Lodging",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "3fbfef66-21c8-4133-99b6-58757e1acb40",
+    "Name": "POS - HDFC Bar",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "9e00a43d-b97e-4456-bbda-24b3d8a6fa0b",
+    "Name": "POS - HDFC Restaurant",
+    "Description": "Sample Data"
+  }
+]

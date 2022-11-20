@@ -1,0 +1,22 @@
+[
+  {
+    "Id": "d03aa5ca-263f-45b0-ae86-8f14c5bde21c",
+    "Name": "Available",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "c87aabe8-8891-4669-8cb0-4b81d74f05f7",
+    "Name": "Occupied",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "97805a86-fd47-4b89-9f73-601a2070b4d7",
+    "Name": "Booked",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "ef360579-cb8b-4f3c-9804-3a80f9236cc1",
+    "Name": "Maintenance",
+    "Description": "Sample Data"
+  }
+]

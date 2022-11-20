@@ -1,0 +1,22 @@
+[
+  {
+    "Id": "5738e20f-9d76-45a2-aa2a-a4026ff727a2",
+    "Name": "Classic Double",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "9a072e96-e655-4e2a-a7ea-e6b1e9dd662d",
+    "Name": "Deluxe Double",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "2660a657-6309-4219-b626-3e9acbd0ae6c",
+    "Name": "Super Deluxe Double",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "bd31f0bd-2007-4237-85cf-8ca61c5d5e89",
+    "Name": "Super Deluxe Family Room",
+    "Description": "Sample Data"
+  }
+]

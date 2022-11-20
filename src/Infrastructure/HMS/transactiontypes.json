@@ -1,0 +1,12 @@
+[
+  {
+    "Id": "adaf9a70-7843-46b2-a7c0-bc5eb7319e3d",
+    "Name": "Income",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "123f031c-f09d-40fa-8d86-cf7a7e165a61",
+    "Name": "Expense",
+    "Description": "Sample Data"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "Id": "c42a73ce-d78a-45d3-b7bc-f4295fd57576",
+    "Name": "Part Completed",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "780ca027-146a-4587-9b8e-0c78ced66999",
+    "Name": "Completed",
+    "Description": "Sample Data"
+  },
+  {
+    "Id": "b61007fe-0bd4-487b-9768-d345d401e030",
+    "Name": "Not Started",
+    "Description": "Sample Data"
+  }
+]
