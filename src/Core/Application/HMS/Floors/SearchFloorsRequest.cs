@@ -2,9 +2,13 @@ namespace FSH.WebApi.Application.HMS.Floors;
 
 public class SearchFloorsRequest : PaginationFilter, IRequest<PaginationResponse<FloorDto>>
 {
-    public DefaultIdType? BrandId { get; set; }
-    public decimal? MinimumRate { get; set; }
-    public decimal? MaximumRate { get; set; }
+}
+
+public class FloorsBySearchRequestSpec : EntitiesByPaginationFilterSpec<Floor, FloorDto>
+{
+    public FloorsBySearchRequestSpec(SearchFloorsRequest request)
+        : base(request) =>
+        Query.OrderBy(c => c.Name, !request.HasOrderBy());
 }
 
 public class SearchFloorsRequestHandler : IRequestHandler<SearchFloorsRequest, PaginationResponse<FloorDto>>
@@ -16,6 +20,6 @@ public class SearchFloorsRequestHandler : IRequestHandler<SearchFloorsRequest, P
     public async Task<PaginationResponse<FloorDto>> Handle(SearchFloorsRequest request, CancellationToken cancellationToken)
     {
         var spec = new FloorsBySearchRequestSpec(request);
-        return await _repository.PaginatedListAsync(spec, request.PageNumber, request.PageSize, cancellationToken: cancellationToken);
+        return await _repository.PaginatedListAsync(spec, request.PageNumber, request.PageSize, cancellationToken);
     }
 }

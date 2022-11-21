@@ -2,7 +2,13 @@ namespace FSH.WebApi.Application.HMS.Vendors;
 
 public class SearchVendorsRequest : PaginationFilter, IRequest<PaginationResponse<VendorDto>>
 {
-    public DefaultIdType? BrandId { get; set; }
+}
+
+public class VendorsBySearchRequestSpec : EntitiesByPaginationFilterSpec<Vendor, VendorDto>
+{
+    public VendorsBySearchRequestSpec(SearchVendorsRequest request)
+        : base(request) =>
+        Query.OrderBy(c => c.Name, !request.HasOrderBy());
 }
 
 public class SearchVendorsRequestHandler : IRequestHandler<SearchVendorsRequest, PaginationResponse<VendorDto>>
@@ -14,6 +20,6 @@ public class SearchVendorsRequestHandler : IRequestHandler<SearchVendorsRequest,
     public async Task<PaginationResponse<VendorDto>> Handle(SearchVendorsRequest request, CancellationToken cancellationToken)
     {
         var spec = new VendorsBySearchRequestSpec(request);
-        return await _repository.PaginatedListAsync(spec, request.PageNumber, request.PageSize, cancellationToken: cancellationToken);
+        return await _repository.PaginatedListAsync(spec, request.PageNumber, request.PageSize, cancellationToken);
     }
 }

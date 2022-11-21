@@ -2,9 +2,13 @@ namespace FSH.WebApi.Application.HMS.Roomtypes;
 
 public class SearchRoomtypesRequest : PaginationFilter, IRequest<PaginationResponse<RoomtypeDto>>
 {
-    public DefaultIdType? BrandId { get; set; }
-    public decimal? MinimumRate { get; set; }
-    public decimal? MaximumRate { get; set; }
+}
+
+public class RoomtypesBySearchRequestSpec : EntitiesByPaginationFilterSpec<Roomtype, RoomtypeDto>
+{
+    public RoomtypesBySearchRequestSpec(SearchRoomtypesRequest request)
+        : base(request) =>
+        Query.OrderBy(c => c.Name, !request.HasOrderBy());
 }
 
 public class SearchRoomtypesRequestHandler : IRequestHandler<SearchRoomtypesRequest, PaginationResponse<RoomtypeDto>>
@@ -16,6 +20,6 @@ public class SearchRoomtypesRequestHandler : IRequestHandler<SearchRoomtypesRequ
     public async Task<PaginationResponse<RoomtypeDto>> Handle(SearchRoomtypesRequest request, CancellationToken cancellationToken)
     {
         var spec = new RoomtypesBySearchRequestSpec(request);
-        return await _repository.PaginatedListAsync(spec, request.PageNumber, request.PageSize, cancellationToken: cancellationToken);
+        return await _repository.PaginatedListAsync(spec, request.PageNumber, request.PageSize, cancellationToken);
     }
 }

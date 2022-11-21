@@ -18,5 +18,10 @@
     "Id": "1b7f7a32-965a-4c18-ba23-2374046dfbd4",
     "Name": "Laundry",
     "Description": "Sample Data"
+  },
+  {
+    "Id": "4a7f7a32-965a-4c18-ba23-2374046dfbd4",
+    "Name": "STT",
+    "Description": "Sample Data"
   }
 ]

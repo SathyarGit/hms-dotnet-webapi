@@ -14,7 +14,7 @@ public class SearchRoomsRequestHandler : IRequestHandler<SearchRoomsRequest, Pag
 
     public async Task<PaginationResponse<RoomDto>> Handle(SearchRoomsRequest request, CancellationToken cancellationToken)
     {
-        var spec = new RoomsBySearchRequestWithFloorsSpec(request);
+        var spec = new RoomsBySearchRequestWithFloorsAndRoomtypesSpec(request);
         return await _repository.PaginatedListAsync(spec, request.PageNumber, request.PageSize, cancellationToken: cancellationToken);
     }
 }

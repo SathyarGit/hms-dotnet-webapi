@@ -15,7 +15,7 @@ public class FloorsController : VersionedApiController
     [HttpGet("{id:guid}")]
     [MustHavePermission(FSHAction.View, FSHResource.Floors)]
     [OpenApiOperation("Get floor details.", "")]
-    public Task<FloorDetailsDto> GetAsync(Guid id)
+    public Task<FloorDto> GetAsync(Guid id)
     {
         return Mediator.Send(new GetFloorRequest(id));
     }

@@ -2,9 +2,13 @@ namespace FSH.WebApi.Application.HMS.Foliotypes;
 
 public class SearchFoliotypesRequest : PaginationFilter, IRequest<PaginationResponse<FoliotypeDto>>
 {
-    public DefaultIdType? BrandId { get; set; }
-    public decimal? MinimumRate { get; set; }
-    public decimal? MaximumRate { get; set; }
+}
+
+public class FoliotypesBySearchRequestSpec : EntitiesByPaginationFilterSpec<Foliotype, FoliotypeDto>
+{
+    public FoliotypesBySearchRequestSpec(SearchFoliotypesRequest request)
+        : base(request) =>
+        Query.OrderBy(c => c.Name, !request.HasOrderBy());
 }
 
 public class SearchFoliotypesRequestHandler : IRequestHandler<SearchFoliotypesRequest, PaginationResponse<FoliotypeDto>>
@@ -16,6 +20,6 @@ public class SearchFoliotypesRequestHandler : IRequestHandler<SearchFoliotypesRe
     public async Task<PaginationResponse<FoliotypeDto>> Handle(SearchFoliotypesRequest request, CancellationToken cancellationToken)
     {
         var spec = new FoliotypesBySearchRequestSpec(request);
-        return await _repository.PaginatedListAsync(spec, request.PageNumber, request.PageSize, cancellationToken: cancellationToken);
+        return await _repository.PaginatedListAsync(spec, request.PageNumber, request.PageSize, cancellationToken);
     }
 }

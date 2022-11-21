@@ -40,7 +40,6 @@ public class GetBookingViaDapperRequestHandler : IRequestHandler<GetBookingViaDa
             BookingMaterialised = booking.BookingMaterialised,
             CustomerId = booking.CustomerId,
             TravelagentId = booking.TravelagentId,
-            // FolioId = booking.FolioId,
             BookingstatusName = string.Empty,
             CustomerName = string.Empty,
             TravelagentName = string.Empty
