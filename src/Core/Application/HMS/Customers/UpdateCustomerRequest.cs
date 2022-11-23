@@ -14,7 +14,7 @@ public class UpdateCustomerRequest : IRequest<DefaultIdType>
     public string? PhoneNumber { get; set; }
     public string? Email { get; set; }
     public string? Notes { get; set; }
-    public DefaultIdType CustclassificationId { get; set; }
+    public DefaultIdType CustomerclassificationId { get; set; }
     public bool DeleteCurrentImage { get; set; } = false;
     public FileUploadRequest? Image { get; set; }
 }
@@ -51,7 +51,7 @@ public class UpdateCustomerRequestHandler : IRequestHandler<UpdateCustomerReques
             ? await _file.UploadAsync<Customer>(request.Image, FileType.Image, cancellationToken)
             : null;
 
-        var updatedCustomer = customer.Update(request.Name, request.AddressLine1, request.AddressLine2, request.City, request.Country, request.Pincode, request.PhoneNumber, request.Email, request.Notes, customerImagePath, request.CustclassificationId);
+        var updatedCustomer = customer.Update(request.Name, request.AddressLine1, request.AddressLine2, request.City, request.Country, request.Pincode, request.PhoneNumber, request.Email, request.Notes, customerImagePath, request.CustomerclassificationId);
 
         // Add Domain Events to be raised after the commit
         customer.DomainEvents.Add(EntityUpdatedEvent.WithEntity(customer));

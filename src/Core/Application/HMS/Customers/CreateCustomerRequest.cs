@@ -14,7 +14,7 @@ public class CreateCustomerRequest : IRequest<DefaultIdType>
     public string? Email { get; set; }
     public string? Notes { get; set; }
     public FileUploadRequest? Image { get; set; }
-    public DefaultIdType CustclassificationId { get; set; }
+    public DefaultIdType CustomerclassificationId { get; set; }
 }
 
 public class CreateCustomerRequestHandler : IRequestHandler<CreateCustomerRequest, DefaultIdType>
@@ -29,7 +29,7 @@ public class CreateCustomerRequestHandler : IRequestHandler<CreateCustomerReques
     {
         string customerImagePath = await _file.UploadAsync<Product>(request.Image, FileType.Image, cancellationToken);
 
-        var customer = new Customer(request.Name, request.AddressLine1, request.AddressLine2, request.City, request.Country, request.Pincode, request.PhoneNumber, request.Email, request.Notes, customerImagePath, request.CustclassificationId);
+        var customer = new Customer(request.Name, request.AddressLine1, request.AddressLine2, request.City, request.Country, request.Pincode, request.PhoneNumber, request.Email, request.Notes, customerImagePath, request.CustomerclassificationId);
 
         // Add Domain Events to be raised after the commit
         customer.DomainEvents.Add(EntityCreatedEvent.WithEntity(customer));

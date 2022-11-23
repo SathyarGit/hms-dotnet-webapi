@@ -15,7 +15,7 @@ public class UpdateCustomerRequestValidator : CustomValidator<UpdateCustomerRequ
         RuleFor(p => p.Image)
             .InjectValidator();
 
-        RuleFor(p => p.CustclassificationId)
+        RuleFor(p => p.CustomerclassificationId)
             .NotEmpty()
             .MustAsync(async (id, ct) => await customerclassificationRepo.GetByIdAsync(id, ct) is not null)
                 .WithMessage((_, id) => T["Custclassification {0} Not Found.", id]);

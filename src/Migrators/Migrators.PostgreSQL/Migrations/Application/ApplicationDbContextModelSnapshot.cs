@@ -418,10 +418,7 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid?>("CustclassificationId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("CustomerclassificationId")
+                    b.Property<Guid?>("CustomerclassificationId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("DeletedBy")
@@ -1264,7 +1261,7 @@ namespace Migrators.PostgreSQL.Migrations.Application
 
                     b.HasKey("Id");
 
-                    b.ToTable("Travelagent", "Catalog");
+                    b.ToTable("Travelagents", "Catalog");
                 });
 
             modelBuilder.Entity("FSH.WebApi.Domain.HMS.Vendor", b =>
@@ -1743,9 +1740,7 @@ namespace Migrators.PostgreSQL.Migrations.Application
                 {
                     b.HasOne("FSH.WebApi.Domain.HMS.Customerclassification", "Customerclassification")
                         .WithMany("Customers")
-                        .HasForeignKey("CustomerclassificationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerclassificationId");
 
                     b.Navigation("Customerclassification");
                 });

@@ -1,4 +1,5 @@
-﻿using FSH.WebApi.Application.HMS.Vendors;
+﻿using FSH.WebApi.Application.HMS.Travelagents;
+using FSH.WebApi.Application.HMS.Vendors;
 
 namespace FSH.WebApi.Host.Controllers.HMS;
 
@@ -52,5 +53,14 @@ public class VendorsController : VersionedApiController
     public Task<Guid> DeleteAsync(Guid id)
     {
         return Mediator.Send(new DeleteVendorRequest(id));
+    }
+
+    [HttpPost("export")]
+    [MustHavePermission(FSHAction.Export, FSHResource.Vendors)]
+    [OpenApiOperation("Export a vendor.", "")]
+    public async Task<FileResult> ExportAsync(ExportVendorsRequest filter)
+    {
+        var result = await Mediator.Send(filter);
+        return File(result, "application/octet-stream", "VendorExports");
     }
 }

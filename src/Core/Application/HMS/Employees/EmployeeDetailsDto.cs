@@ -6,8 +6,8 @@ public class EmployeeDetailsDto : IDto
 {
     public DefaultIdType Id { get; set; }
     public string Name { get; set; } = default!;
-    public string? Description { get; set; }
-    public decimal Rate { get; set; }
+    public string? Address { get; set; }
+    public string? Notes { get; set; }
     public string? ImagePath { get; set; }
     public DepartmentDto Department { get; set; } = default!;
 }

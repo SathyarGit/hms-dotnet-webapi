@@ -2,7 +2,7 @@ namespace FSH.WebApi.Application.HMS.Customers;
 
 public class SearchCustomersRequest : PaginationFilter, IRequest<PaginationResponse<CustomerDto>>
 {
-    public DefaultIdType? CustclassificationId { get; set; }
+    public DefaultIdType? CustomerclassificationId { get; set; }
 }
 
 public class SearchCustomersRequestHandler : IRequestHandler<SearchCustomersRequest, PaginationResponse<CustomerDto>>

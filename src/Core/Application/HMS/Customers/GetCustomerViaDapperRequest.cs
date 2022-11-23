@@ -39,7 +39,7 @@ public class GetCustomerViaDapperRequestHandler : IRequestHandler<GetCustomerVia
             Email = customer.Email,
             Notes = customer.Notes,
             ImagePath = customer.ImagePath,
-            CustclassificationId = customer.CustclassificationId,
+            CustomerclassificationId = customer.CustomerclassificationId,
             CustomerclassificationName = string.Empty
         };
     }

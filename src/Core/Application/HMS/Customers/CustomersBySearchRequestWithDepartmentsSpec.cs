@@ -7,5 +7,5 @@ public class CustomersBySearchRequestWithCustomerclassificationsSpec : EntitiesB
         Query
             .Include(p => p.Customerclassification)
             .OrderBy(c => c.Name, !request.HasOrderBy())
-            .Where(p => p.CustclassificationId.Equals(request.CustclassificationId!.Value), request.CustclassificationId.HasValue);
+            .Where(p => p.CustomerclassificationId.Equals(request.CustomerclassificationId!.Value), request.CustomerclassificationId.HasValue);
 }

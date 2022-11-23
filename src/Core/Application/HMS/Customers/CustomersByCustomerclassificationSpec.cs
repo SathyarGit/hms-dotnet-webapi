@@ -2,6 +2,6 @@
 
 public class CustomersByCustomerclassificationSpec : Specification<Customer>
 {
-    public CustomersByCustomerclassificationSpec(DefaultIdType custclassificationId) =>
-        Query.Where(p => p.CustclassificationId == custclassificationId);
+    public CustomersByCustomerclassificationSpec(DefaultIdType customerclassificationId) =>
+        Query.Where(p => p.CustomerclassificationId == customerclassificationId);
 }

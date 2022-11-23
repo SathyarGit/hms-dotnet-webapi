@@ -12,12 +12,12 @@ public class Customer : AuditableEntity, IAggregateRoot
     public string Email { get; private set; }
     public string Notes { get; private set; }
     public string? ImagePath { get; private set; }
-    public DefaultIdType? CustclassificationId { get; private set; }
+    public DefaultIdType? CustomerclassificationId { get; private set; }
 
     public virtual Customerclassification Customerclassification { get; set; } = default!;
     public virtual ICollection<Booking> Bookings { get; set; } = new HashSet<Booking>();
 
-    public Customer(string name, string? addressLine1, string? addressLine2, string? city, string? country, string? pincode, string? phoneNumber, string? email, string? notes, string? imagePath, DefaultIdType? custclassificationId)
+    public Customer(string name, string? addressLine1, string? addressLine2, string? city, string? country, string? pincode, string? phoneNumber, string? email, string? notes, string? imagePath, DefaultIdType? customerclassificationId)
     {
         Name = name;
         AddressLine1 = addressLine1 ?? string.Empty;
@@ -29,10 +29,10 @@ public class Customer : AuditableEntity, IAggregateRoot
         Email = email ?? string.Empty;
         Notes = notes ?? string.Empty;
         ImagePath = imagePath ?? string.Empty;
-        CustclassificationId = custclassificationId;
+        CustomerclassificationId = customerclassificationId;
     }
 
-    public Customer Update(string name, string? addressLine1, string? addressLine2, string? city, string? country, string? pincode, string? phoneNumber, string? email, string? notes, string? imagePath, DefaultIdType? custclassificationId)
+    public Customer Update(string name, string? addressLine1, string? addressLine2, string? city, string? country, string? pincode, string? phoneNumber, string? email, string? notes, string? imagePath, DefaultIdType? customerclassificationId)
     {
         if (name is not null && Name?.Equals(name) is not true) Name = name;
         if (addressLine1 is not null && AddressLine1?.Equals(addressLine1) is not true) AddressLine1 = addressLine1;
@@ -43,7 +43,7 @@ public class Customer : AuditableEntity, IAggregateRoot
         if (phoneNumber is not null && PhoneNumber?.Equals(phoneNumber) is not true) PhoneNumber = phoneNumber;
         if (email is not null && Email?.Equals(email) is not true) Email = email;
         if (imagePath is not null && ImagePath?.Equals(imagePath) is not true) ImagePath = imagePath;
-        if (custclassificationId.HasValue && custclassificationId.Value != DefaultIdType.Empty && !CustclassificationId.Equals(custclassificationId.Value)) CustclassificationId = custclassificationId.Value;
+        if (customerclassificationId.HasValue && customerclassificationId.Value != DefaultIdType.Empty && !CustomerclassificationId.Equals(customerclassificationId.Value)) CustomerclassificationId = customerclassificationId.Value;
         return this;
     }
 

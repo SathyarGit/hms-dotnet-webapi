@@ -4,7 +4,7 @@ namespace FSH.WebApi.Application.HMS.Customers;
 
 public class ExportCustomersRequest : BaseFilter, IRequest<Stream>
 {
-    public DefaultIdType? CustclassificationId { get; set; }
+    public DefaultIdType? CustomerclassificationId { get; set; }
 }
 
 public class ExportCustomersRequestHandler : IRequestHandler<ExportCustomersRequest, Stream>
@@ -34,5 +34,5 @@ public class ExportCustomersWithCustomerclassificationsSpecification : EntitiesB
         : base(request) =>
         Query
             .Include(p => p.Customerclassification)
-            .Where(p => p.CustclassificationId.Equals(request.CustclassificationId!.Value), request.CustclassificationId.HasValue);
+            .Where(p => p.CustomerclassificationId.Equals(request.CustomerclassificationId!.Value), request.CustomerclassificationId.HasValue);
 }

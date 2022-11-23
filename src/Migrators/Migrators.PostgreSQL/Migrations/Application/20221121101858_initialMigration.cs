@@ -315,7 +315,7 @@ namespace Migrators.PostgreSQL.Migrations.Application
                 });
 
             migrationBuilder.CreateTable(
-                name: "Travelagent",
+                name: "Travelagents",
                 schema: "Catalog",
                 columns: table => new
                 {
@@ -338,7 +338,7 @@ namespace Migrators.PostgreSQL.Migrations.Application
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Travelagent", x => x.Id);
+                    table.PrimaryKey("PK_Travelagents", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -444,8 +444,7 @@ namespace Migrators.PostgreSQL.Migrations.Application
                     Email = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
                     Notes = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: false),
                     ImagePath = table.Column<string>(type: "text", nullable: true),
-                    CustclassificationId = table.Column<Guid>(type: "uuid", nullable: true),
-                    CustomerclassificationId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CustomerclassificationId = table.Column<Guid>(type: "uuid", nullable: true),
                     TenantId = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
                     CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -462,8 +461,7 @@ namespace Migrators.PostgreSQL.Migrations.Application
                         column: x => x.CustomerclassificationId,
                         principalSchema: "HMS",
                         principalTable: "Customerclassification",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -755,10 +753,10 @@ namespace Migrators.PostgreSQL.Migrations.Application
                         principalTable: "Customer",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Booking_Travelagent_TravelagentId",
+                        name: "FK_Booking_Travelagents_TravelagentId",
                         column: x => x.TravelagentId,
                         principalSchema: "Catalog",
-                        principalTable: "Travelagent",
+                        principalTable: "Travelagents",
                         principalColumn: "Id");
                 });
 
@@ -937,10 +935,10 @@ namespace Migrators.PostgreSQL.Migrations.Application
                         principalTable: "Transactionstatus",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Charge_Travelagent_TravelagentId",
+                        name: "FK_Charge_Travelagents_TravelagentId",
                         column: x => x.TravelagentId,
                         principalSchema: "Catalog",
-                        principalTable: "Travelagent",
+                        principalTable: "Travelagents",
                         principalColumn: "Id");
                 });
 
@@ -1277,7 +1275,7 @@ namespace Migrators.PostgreSQL.Migrations.Application
                 schema: "HMS");
 
             migrationBuilder.DropTable(
-                name: "Travelagent",
+                name: "Travelagents",
                 schema: "Catalog");
 
             migrationBuilder.DropTable(

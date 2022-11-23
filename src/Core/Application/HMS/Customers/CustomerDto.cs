@@ -13,6 +13,6 @@ public class CustomerDto : IDto
     public string? Email { get; set; }
     public string? Notes { get; set; }
     public string? ImagePath { get; set; }
-    public DefaultIdType? CustclassificationId { get; set; }
+    public DefaultIdType? CustomerclassificationId { get; set; }
     public string CustomerclassificationName { get; set; } = default!;
 }

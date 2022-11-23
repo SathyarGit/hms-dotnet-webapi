@@ -1,4 +1,5 @@
-﻿using FSH.WebApi.Application.HMS.Travelagents;
+﻿using FSH.WebApi.Application.HMS.Rooms;
+using FSH.WebApi.Application.HMS.Travelagents;
 
 namespace FSH.WebApi.Host.Controllers.HMS;
 
@@ -52,5 +53,14 @@ public class TravelagentsController : VersionedApiController
     public Task<Guid> DeleteAsync(Guid id)
     {
         return Mediator.Send(new DeleteTravelagentRequest(id));
+    }
+
+    [HttpPost("export")]
+    [MustHavePermission(FSHAction.Export, FSHResource.Travelagents)]
+    [OpenApiOperation("Export a travelagent.", "")]
+    public async Task<FileResult> ExportAsync(ExportTravelagentsRequest filter)
+    {
+        var result = await Mediator.Send(filter);
+        return File(result, "application/octet-stream", "TravelagentExports");
     }
 }
