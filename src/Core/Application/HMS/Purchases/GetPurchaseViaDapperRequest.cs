@@ -39,7 +39,7 @@ public class GetPurchaseViaDapperRequestHandler : IRequestHandler<GetPurchaseVia
             TransactionstatusId = purchase.TransactionstatusId,
             DepartmentName = string.Empty,
             VendorName = string.Empty,
-            Transactionstatus = string.Empty
+            TransactionstatusName = string.Empty
         };
     }
 }

@@ -13,5 +13,5 @@ public class PurchaseDto : IDto
     public DefaultIdType? TransactionstatusId { get; set; }
     public string DepartmentName { get; set; } = default!;
     public string VendorName { get; set; } = default!;
-    public string Transactionstatus { get; set; } = default!;
+    public string TransactionstatusName { get; set; } = default!;
 }

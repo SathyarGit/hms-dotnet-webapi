@@ -3,6 +3,9 @@ namespace FSH.WebApi.Application.HMS.Purchases;
 public class SearchPurchasesRequest : PaginationFilter, IRequest<PaginationResponse<PurchaseDto>>
 {
     public DefaultIdType? DepartmentId { get; set; }
+    public DefaultIdType? VendorId { get; set; }
+    public DefaultIdType? TransactionstatusId { get; set; }
+
     public int? MinimumAmount { get; set; }
     public int? MaximumAmount { get; set; }
 }
